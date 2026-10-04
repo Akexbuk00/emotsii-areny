@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Эмоции Арены</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Onest:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --sky:#2a86e0; --sky-deep:#1559a8; --night:#0d2f63;
@@ -182,7 +182,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .wiki summary{cursor:pointer;color:var(--sky-deep)}
 .wiki ul{margin:8px 0 0 20px;display:grid;gap:4px;font-weight:600;font-size:14px}
 .wiki a{color:var(--sky-deep);text-underline-offset:2px}
-body.drop::after{content:"Отпусти — загружу звуки";position:fixed;inset:12px;border:4px dashed var(--gold);border-radius:20px;background:rgba(13,47,99,.75);display:grid;place-items:center;font-weight:900;font-size:28px;color:#fff;z-index:50}
+body.drop::after{content:"Отпусти, чтобы загрузить звуки";position:fixed;inset:12px;border:4px dashed var(--gold);border-radius:20px;background:rgba(13,47,99,.75);display:grid;place-items:center;font-weight:900;font-size:28px;color:#fff;z-index:50}
 @media (max-width:720px){.sound-panel{flex-direction:column;align-items:stretch}.sound-panel > div,.wiki{flex:none}}
 .legal{text-align:center;font-size:12px;font-weight:500;color:#cfe4ff;padding:0 16px 16px}
 .legal a{color:inherit;text-underline-offset:2px}
@@ -252,6 +252,96 @@ body.drop::after{content:"Отпусти — загружу звуки";position
   .btn{min-height:52px;font-size:18px;padding:0 18px}
   .mystery{font-size:90px}
 }
+/* ===== Royal Arena theme =====
+   Layout: asymmetric split hero (copy left, emote stack right), gold-ringed arena boards.
+   Arena-sky blues, CR gold, ink outlines; display Dela Gothic One, body Onest. */
+:root{
+  --sky:#1a4fb8; --sky-deep:#0c2a6b; --night:#081a45;
+  --gold:#ffc83d; --gold-edge:#c88a10; --gold-ink:#3a2600;
+  --blue-btn:#3f95ff; --blue-edge:#1d5bc2;
+  --paper:#f3f7ff; --paper-edge:#9fb6e6; --ink:#0a1636;
+  --stroke:#0a1636; --cream:#dfeaff;
+  --display:'Dela Gothic One',Onest,system-ui,sans-serif;
+}
+body{font-family:Onest,system-ui,sans-serif;min-height:100dvh;
+  background:var(--night) radial-gradient(90% 60% at 80% 8%,#3b7be0 0%,var(--sky) 35%,var(--sky-deep) 75%,var(--night) 100%) fixed}
+.wrap{max-width:1200px;padding:16px 24px 40px;min-height:100dvh}
+.stroke,.stroke-s{-webkit-text-stroke:0;text-shadow:0 4px 0 var(--ink),0 12px 28px rgba(8,26,69,.45)}
+.logo,.hero h1,.btn,.turn,.r-level,.r-call,.emote-name,.verdict,.question,.mystery,.pod .place,.pod .nm,.pod .pts,.panel h2,.sound-panel h2{font-family:var(--display);font-weight:400;letter-spacing:0}
+.logo{font-size:clamp(18px,2.4vw,24px)}
+.round-pill,.chip{background:rgba(8,26,69,.55);border:1px solid rgba(255,255,255,.18)}
+
+/* buttons: gold slab with ink outline, readable dark label */
+.btn{color:var(--gold-ink);-webkit-text-stroke:0;text-shadow:none;border:3px solid var(--ink);border-radius:16px;
+  background:linear-gradient(180deg,#ffe07a,var(--gold));box-shadow:0 6px 0 var(--gold-edge),0 14px 24px rgba(8,26,69,.45);font-size:20px}
+.btn::after{opacity:.6}
+.btn.blue{color:#fff;background:linear-gradient(180deg,#7fc4ff,var(--blue-btn));box-shadow:0 6px 0 var(--blue-edge),0 14px 24px rgba(8,26,69,.45);text-shadow:0 2px 0 var(--ink)}
+.btn.green{color:#fff;text-shadow:0 2px 0 var(--ink)}
+.btn.red{color:#fff;text-shadow:0 2px 0 var(--ink)}
+.btn.small{font-size:15px}
+.btn:active{transform:translateY(5px) scale(.98)}
+
+/* start hero */
+.hero.split{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;text-align:left;padding-block:clamp(8px,4vh,48px)}
+.hero-copy{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.hero.split h1{font-size:clamp(42px,6.2vw,82px);line-height:1.02;text-wrap:balance}
+.hero.split h1 em{font-style:normal;color:var(--gold)}
+.hero.split p{font-size:clamp(17px,1.6vw,19px);font-weight:500;color:var(--cream);max-width:34ch;line-height:1.45}
+.hero-copy .row{justify-content:flex-start;margin-top:8px}
+.stack{position:relative;height:clamp(300px,40vw,460px)}
+.stack .face{position:absolute;width:44%;aspect-ratio:auto}
+.stack .emo{filter:drop-shadow(0 14px 18px rgba(8,26,69,.55))}
+.stack .face:nth-child(1){left:2%;top:4%;transform:rotate(-8deg)}
+.stack .face:nth-child(2){right:4%;top:0;width:38%;transform:rotate(7deg)}
+.stack .face:nth-child(3){left:22%;top:32%;width:54%;transform:rotate(-2deg);z-index:2}
+.stack .face:nth-child(4){left:0;bottom:0;width:38%;transform:rotate(6deg)}
+.stack .face:nth-child(5){right:0;bottom:4%;width:40%;transform:rotate(-6deg)}
+
+/* paper panels: cool white with ink outline */
+.panel{background:var(--paper);color:var(--ink);border:3px solid var(--ink);border-radius:20px;box-shadow:0 6px 0 var(--paper-edge),0 18px 36px rgba(8,26,69,.4)}
+.panel h2,.sound-panel h2{font-size:20px}
+.note{color:#3d4d72}
+.sound-panel{max-width:none}
+.sound-panel .count{background:var(--sky);font-family:Onest;font-weight:800}
+.assign summary,.wiki summary{color:var(--sky)}
+.seg{background:#dbe5fb}
+.seg button[aria-pressed="true"]{background:var(--sky)}
+.player-row input{border-color:var(--paper-edge)}
+.player-row input:focus{border-color:var(--sky)}
+.slot{border-color:var(--paper-edge)}
+
+/* arena boards: gold-ringed stage, like the in-game card tray */
+.r-grid{background:linear-gradient(180deg,#1d58c9,#123e98);border:3px solid var(--ink);border-radius:22px;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.25),0 0 0 6px rgba(255,200,61,.9),0 20px 40px rgba(8,26,69,.5)}
+.r-head{min-height:72px}
+.r-level{font-size:clamp(17px,2.2vw,22px)}
+.r-level::first-line{color:#fff}
+.r-call{color:var(--gold)}
+.r-progress{background:rgba(8,26,69,.6);height:12px}
+.r-progress div{background:linear-gradient(90deg,var(--gold),#ffe07a)}
+.r-hint{color:var(--cream);font-weight:600}
+.bubble{border:3px solid var(--ink);box-shadow:0 0 0 6px rgba(255,200,61,.9),0 18px 36px rgba(8,26,69,.45)}
+.bubble::after{border-color:var(--ink)}
+.mystery{color:var(--sky);-webkit-text-stroke:0;text-shadow:0 5px 0 var(--ink)}
+.task{color:var(--cream);font-weight:600}
+.say{color:var(--gold)}
+.ans{background:var(--paper);border-color:var(--ink);box-shadow:0 5px 0 var(--paper-edge);font-weight:700}
+.chip.active{background:var(--gold);color:var(--gold-ink);border-color:var(--ink)}
+.toast{background:var(--night);border:1px solid rgba(255,255,255,.18)}
+.legal{color:#b9cdf5}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+::selection{background:var(--gold);color:var(--gold-ink)}
+
+#scrEnd .faces-row .face{width:clamp(76px,10vw,124px)}
+#scrEnd .faces-row{gap:18px;margin-bottom:8px}
+@media (max-width:760px){
+  .hero.split{grid-template-columns:1fr;gap:12px}
+  .stack{order:-1;height:230px}
+  .hero.split h1{font-size:40px}
+  .btn{font-size:17px}
+  .wrap{padding:12px 16px 32px}
+}
+
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
 }
@@ -266,24 +356,26 @@ body.drop::after{content:"Отпусти — загружу звуки";position
 
   <!-- START / SETUP -->
   <section id="scrStart" class="screen">
-    <div class="hero">
-      <div class="faces-row" id="heroFaces"></div>
-      <h1 class="stroke">Повтори эмоцию!</h1>
-      <p>Появляется эмоция из Clash Royale — повтори её голосом, лицом и жестом. Есть ритм-челлендж под бит и викторина на очки.</p>
-    </div>
-    <div class="row" id="modeRow">
+    <div class="hero split">
+      <div class="hero-copy">
+        <h1 class="stroke">Повтори <em>эмоцию</em> за&nbsp;королём</h1>
+        <p>Карточка загорается под бит. Все хором повторяют её голосом, лицом и жестом.</p>
+        <div class="row" id="modeRow">
       <button class="btn" id="rhythmBtn" type="button"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12-7.5a1 1 0 0 0 0-1.72l-12-7.5A1 1 0 0 0 7 4.5z" stroke="#0b2348" stroke-width="2" stroke-linejoin="round"/></svg>Ритм-челлендж</button>
-      <button class="btn blue" id="quizBtn" type="button">Викторина на очки</button>
+      <button class="btn blue" id="quizBtn" type="button">Викторина</button>
+    </div>
+      </div>
+      <div class="stack" id="heroFaces" aria-hidden="true"></div>
     </div>
     <div class="panel sound-panel" id="soundPanel">
       <div>
         <h2>Звуки эмоций <span class="count" id="soundCount">0</span></h2>
-        <p class="note">У каждой эмоции — её собственный оригинальный звук из файлов игры. У смеха, плача, злости и «класса» короля по 4 варианта, играют вперемешку. Свой звук можно привязать к любой эмоции ниже.</p>
+        <p class="note">У каждой эмоции свой оригинальный звук из файлов игры. У смеха, плача, злости и «класса» короля по 4 варианта, играют вперемешку. Свой звук можно привязать к любой эмоции ниже.</p>
       </div>
       <label class="btn blue small" for="soundInput">Добавить звуки</label>
       <details class="assign">
         <summary>Привязать свой звук к эмоции</summary>
-        <p class="note">Нажми на эмоцию и выбери файл — или перетащи файл прямо на неё. Имя файла не важно. Жёлтая точка — у эмоции есть звук.</p>
+        <p class="note">Нажми на эмоцию и выбери файл или перетащи файл прямо на неё. Имя файла не важно. Жёлтая точка: у эмоции есть звук.</p>
         <div class="assign-grid" id="assignGrid"></div>
         <input id="assignInput" type="file" accept="audio/*,.mp3,.ogg,.wav,.m4a,.webm" hidden>
       </details>
@@ -322,7 +414,7 @@ body.drop::after{content:"Отпусти — загружу звуки";position
       <button class="btn" id="rPlay" type="button">Старт</button>
       <button class="btn blue small" id="rBack" type="button">Меню</button>
     </div>
-    <p class="r-hint">Карточка загорается — все хором повторяют эмоцию: голос, лицо, жест. Каждый уровень быстрее. Пробел — старт/пауза.</p>
+    <p class="r-hint">Карточка загорается под бит, и все хором повторяют эмоцию: голос, лицо, жест. Каждый уровень быстрее. Пробел ставит игру на паузу.</p>
   </section>
 
   <!-- ROUND -->
@@ -346,7 +438,7 @@ body.drop::after{content:"Отпусти — загружу звуки";position
     </div>
   </section>
 </div>
-<p class="legal">Неофициальный фанатский проект, не одобрен Supercell. Картинки — из Supercell Fan Kit, звуки — оригинальные файлы игры, по <a href="https://supercell.com/en/fan-content-policy/" target="_blank" rel="noopener">Fan Content Policy</a>.</p>
+<p class="legal">Неофициальный фанатский проект, не одобрен Supercell. Картинки из Supercell Fan Kit, звуки из файлов игры, по <a href="https://supercell.com/en/fan-content-policy/" target="_blank" rel="noopener">Fan Content Policy</a>.</p>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -585,7 +677,7 @@ async function micInit(){
     const c=ac(), s=c.createMediaStreamSource(micStream);
     analyser=c.createAnalyser(); analyser.fftSize=1024; s.connect(analyser);
     return true;
-  }catch(e){ toast('Микрофон недоступен — оцениваем на глаз.'); return false; }
+  }catch(e){ toast('Микрофон недоступен. Оцениваем на глаз.'); return false; }
 }
 function measure(ms, onLevel){
   return new Promise(res=>{
@@ -622,7 +714,7 @@ function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show')
 function show(id){if(id!=='#scrRhythm')R.stop&&R.stop();['#scrStart','#scrGame','#scrEnd','#scrRhythm'].forEach(s=>$(s).classList.toggle('hidden',s!==id));$('#roundPill').classList.toggle('hidden',id!=='#scrGame');window.scrollTo(0,0);}
 
 /* setup UI */
-$('#heroFaces').innerHTML=['king_laugh','goblin_grinch','skeleton_dancing','hog_sunset','barbarian_shirtrip','babydragon_egg','king_angry'].map(i=>byId[i].face()).join('');
+$('#heroFaces').innerHTML=['skeleton_dancing','hog_sunset','king_laugh','goblin_grinch','babydragon_egg'].map(i=>byId[i].face()).join('');
 function renderPlayers(){
   $('#playerList').innerHTML=S.players.map((p,i)=>`
     <div class="player-row"><span class="dot" style="background:${COLORS[i%COLORS.length]}"></span>
@@ -656,7 +748,7 @@ $('#assignGrid').addEventListener('dragover',e=>{const b=e.target.closest('.slot
 $('#assignGrid').addEventListener('dragleave',e=>{const b=e.target.closest('.slot');if(b&&!b.contains(e.relatedTarget))b.classList.remove('over');});
 $('#assignGrid').addEventListener('drop',e=>{const b=e.target.closest('.slot');if(!b)return;e.preventDefault();e.stopPropagation();b.classList.remove('over');document.body.classList.remove('drop');assignFile(b.dataset.id,e.dataTransfer.files[0]);});
 dbLoadAll().then(renderAssign);renderSoundCount();renderAssign();
-$('#testSound').onclick=()=>{const have=EMOTES.filter(e=>userAudio[e.id]);if(!have.length)return toast('Звуков пока нет — добавь файлы.');const e=have[Math.random()*have.length|0];playEmote(e.id);toast(e.name);};
+$('#testSound').onclick=()=>{const have=EMOTES.filter(e=>userAudio[e.id]);if(!have.length)return toast('Звуков пока нет. Добавь файлы.');const e=have[Math.random()*have.length|0];playEmote(e.id);toast(e.name);};
 renderPlayers();
 
 /* game */
@@ -742,7 +834,7 @@ function roundRepeat(e){
 
 /* 2. Guess the emote by sound */
 function roundGuess(e){
-  header('Какая эмоция звучит? Угадай — и потом повтори её!');
+  header('Какая эмоция звучит? Угадай и повтори её!');
   // distractors never share the voice of the right answer (all Hog emotes use the same lines)
   const voice=id=>(userAudio[id]||[]).map(a=>a.src)[0];
   const opts=shuffle([e,...shuffle(EMOTES.filter(x=>x.id!==e.id&&(!voice(x.id)||voice(x.id)!==voice(e.id)))).slice(0,3)]);
@@ -761,7 +853,7 @@ function roundGuess(e){
     if(!ok)b.classList.add('wrong');
     if(ok)cur().score+=1;sfx(ok?'right':'wrong');
     $('#bubble').innerHTML=e.face();
-    const v=$('#verdict');v.textContent=ok?'Верно! +1 — теперь повтори её!':`Это «${e.name}». Все повторяем!`;v.classList.add('pop');
+    const v=$('#verdict');v.textContent=ok?'Верно! +1. Теперь повтори её!':`Это «${e.name}». Все повторяем!`;v.classList.add('pop');
     $('#after').classList.remove('hidden');bindNext();renderScores();
     setTimeout(()=>bubbleAnim(playEmote(e.id)),700);
   };
@@ -769,7 +861,7 @@ function roundGuess(e){
 
 /* 3. Trivia — answer reaction is an emote */
 function roundTrivia(q){
-  header('Вопрос по Clash Royale. Ответ реагирует эмоцией — повтори её!');
+  header('Вопрос по Clash Royale. На ответ отвечает эмоция, повтори её!');
   const right=q.a[0];const opts=shuffle(q.a);
   $('#stage').innerHTML=`
     <div class="question stroke-s">${esc(q.q)}</div>
