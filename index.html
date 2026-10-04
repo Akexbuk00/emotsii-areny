@@ -337,6 +337,86 @@ body{font-family:Onest,system-ui,sans-serif;min-height:100dvh;
 
 #scrEnd .faces-row .face{width:clamp(76px,10vw,124px)}
 #scrEnd .faces-row{gap:18px;margin-bottom:8px}
+/* ===== More games ===== */
+.more{display:flex;flex-direction:column;gap:14px}
+.more-title{font-family:var(--display);font-weight:400;font-size:clamp(22px,2.6vw,28px)}
+.gtiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.gtile{display:flex;flex-direction:column;gap:6px;text-align:left;padding:14px;border-radius:20px;color:#fff;
+  background:linear-gradient(180deg,#1d58c9,#123e98);border:3px solid var(--ink);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.22),0 6px 0 #0a2a6e,0 14px 28px rgba(8,26,69,.4);
+  transition:transform 160ms var(--ease-out),box-shadow 160ms var(--ease-out)}
+.gtile b{font-family:var(--display);font-weight:400;font-size:19px}
+.gtile > span:last-child{font-size:14px;line-height:1.4;color:var(--cream)}
+@media (hover:hover){.gtile:hover{transform:translateY(-3px);box-shadow:inset 0 2px 0 rgba(255,255,255,.22),0 9px 0 #0a2a6e,0 0 0 4px rgba(255,200,61,.85),0 18px 30px rgba(8,26,69,.45)}}
+.gtile:active{transform:translateY(3px);box-shadow:inset 0 2px 0 rgba(255,255,255,.22),0 2px 0 #0a2a6e}
+.gt-art{display:flex;height:84px;align-items:center;justify-content:center;margin-bottom:4px}
+.gt-art .face{width:84px;height:84px;margin-inline:-10px}
+.gt-art .face:nth-child(2){transform:translateY(-6px) rotate(6deg)}
+.gt-art .face:nth-child(3){transform:rotate(-6deg)}
+
+.gscreen{justify-content:flex-start;gap:16px}
+.g-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;min-height:56px}
+.g-title{font-family:var(--display);font-weight:400;font-size:clamp(24px,3vw,34px)}
+.g-stats{display:flex;gap:8px;flex-wrap:wrap}
+.pill{background:rgba(8,26,69,.55);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:7px 14px;font-weight:700;font-size:15px}
+.pill b{font-variant-numeric:tabular-nums;color:var(--gold);margin-left:4px}
+.pill.on{background:var(--gold);color:var(--gold-ink);border-color:var(--ink)}
+.pill.on b{color:var(--gold-ink)}
+.g-status{text-align:center;font-weight:700;font-size:clamp(17px,2vw,20px);color:var(--cream);min-height:1.5em}
+.g-result{text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.g-result h3{font-family:var(--display);font-weight:400;font-size:clamp(26px,4vw,40px);color:var(--gold);text-shadow:0 4px 0 var(--ink)}
+.g-result p{font-weight:600;color:var(--cream)}
+.g-timer{height:12px;border-radius:999px;background:rgba(8,26,69,.6);overflow:hidden;width:min(760px,100%);margin:0 auto}
+.g-timer div{height:100%;width:100%;background:linear-gradient(90deg,var(--gold),#ffe07a);transform-origin:left}
+
+/* memory: flip cards */
+.mem-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.6vw,16px);width:min(100%,max(300px,calc(100svh - 270px)));margin:0 auto;
+  padding:clamp(10px,2vw,20px);border-radius:22px;background:linear-gradient(180deg,#1d58c9,#123e98);border:3px solid var(--ink);box-shadow:inset 0 2px 0 rgba(255,255,255,.25),0 0 0 6px rgba(255,200,61,.9),0 20px 40px rgba(8,26,69,.5)}
+.mcard{display:block;padding:0;aspect-ratio:1;perspective:700px;border-radius:14px;min-width:0;width:100%}
+.mc-in{display:block;position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 380ms var(--ease-out)}
+.mcard.flip .mc-in,.mcard.done .mc-in{transform:rotateY(180deg)}
+.mc-f,.mc-b{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:grid;place-items:center;border:3px solid var(--ink)}
+.mc-f{background:radial-gradient(circle at 50% 35%,#3f95ff,#1a4fb8 70%);box-shadow:0 4px 0 #0a2a6e}
+.mc-f::after{content:"?";font-family:var(--display);font-size:clamp(26px,5vw,44px);color:var(--gold);text-shadow:0 3px 0 var(--ink)}
+.mc-b{background:#f3f7ff;transform:rotateY(180deg);padding:6%}
+.mc-b .face{width:100%;height:100%;aspect-ratio:auto}
+.mcard.done .mc-b{box-shadow:0 0 0 4px var(--gold),0 0 22px rgba(255,200,61,.7)}
+.mcard.miss .mc-b{box-shadow:0 0 0 4px var(--red)}
+@media (hover:hover){.mcard:not(.flip):not(.done):hover .mc-f{filter:brightness(1.12)}}
+
+/* chain + odd: big emote buttons */
+.sim-grid,.odd-grid{display:grid;gap:clamp(10px,2vw,18px);width:min(100%,760px);margin:0 auto}
+.sim-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.odd-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ebtn{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 8px;border-radius:18px;min-width:0;
+  background:var(--paper);color:var(--ink);border:3px solid var(--ink);box-shadow:0 6px 0 var(--paper-edge);transition:transform 120ms var(--ease-out),box-shadow 160ms var(--ease-out),background 200ms}
+.ebtn .face{width:min(100%,150px)}
+.ebtn .cap{font-weight:700;font-size:13px;line-height:1.2;text-align:center;min-height:2.4em}
+.ebtn:active{transform:translateY(4px);box-shadow:0 2px 0 var(--paper-edge)}
+.ebtn.lit{background:#fff3c4;transform:scale(1.06);box-shadow:0 6px 0 var(--gold-edge),0 0 0 5px var(--gold),0 0 28px rgba(255,200,61,.8)}
+.ebtn.right{background:#c9f5b5;box-shadow:0 6px 0 var(--green-edge)}
+.ebtn.wrong{background:#ffd0cc;box-shadow:0 6px 0 var(--red-edge)}
+.ebtn[disabled]{cursor:default}
+.ebtn.dim{opacity:.55}
+
+/* pantomime */
+.pan-stage{display:flex;flex-direction:column;align-items:center;gap:12px}
+.pan-card{width:min(320px,70vw);aspect-ratio:1;border-radius:24px;background:#fff;border:3px solid var(--ink);display:grid;place-items:center;padding:8%;
+  box-shadow:0 0 0 6px rgba(255,200,61,.9),0 18px 36px rgba(8,26,69,.45)}
+.pan-card .face{width:100%;height:100%;aspect-ratio:auto}
+.pan-name{font-family:var(--display);font-size:clamp(22px,3.4vw,34px);text-align:center;text-shadow:0 4px 0 var(--ink);text-wrap:balance}
+.pan-clock{font-family:var(--display);font-size:clamp(40px,6vw,64px);color:var(--gold);text-shadow:0 5px 0 var(--ink);font-variant-numeric:tabular-nums}
+.pan-clock.low{color:#ff8a80}
+.pan-cover{width:min(320px,70vw);aspect-ratio:1;border-radius:24px;display:grid;place-items:center;text-align:center;padding:24px;font-weight:700;color:var(--cream);
+  background:linear-gradient(180deg,#1d58c9,#123e98);border:3px solid var(--ink)}
+
+@media (max-width:760px){
+  .gtiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gt-art{height:64px}.gt-art .face{width:64px;height:64px}
+  .odd-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sim-grid{gap:8px}
+  .ebtn .cap{font-size:12px}
+}
 @media (max-width:760px){
   .hero.split{grid-template-columns:1fr;gap:12px}
   .stack{order:-1;height:230px}
@@ -370,6 +450,15 @@ body{font-family:Onest,system-ui,sans-serif;min-height:100dvh;
       </div>
       <div class="stack" id="heroFaces" aria-hidden="true"></div>
     </div>
+    <section class="more" aria-labelledby="moreTitle">
+      <h2 class="more-title stroke-s" id="moreTitle">Ещё игры</h2>
+      <div class="gtiles">
+        <button class="gtile" type="button" data-game="mem"><span class="gt-art" data-ids="king_laughter,king_laughter"></span><b>Найди пару</b><span>Переворачивай карточки, ищи одинаковые эмоции глазами и на слух.</span></button>
+        <button class="gtile" type="button" data-game="sim"><span class="gt-art" data-ids="goblin_grinch,skeleton_dancing,baby_dragon_egg"></span><b>Повтори цепочку</b><span>Эмоции звучат по очереди. Запомни и повтори, цепочка растёт.</span></button>
+        <button class="gtile" type="button" data-game="odd"><span class="gt-art" data-ids="king_mad,king_crying,goblin_boohoo"></span><b>Найди чужого</b><span>Три эмоции одного персонажа и одна чужая. Успей за 10 секунд.</span></button>
+        <button class="gtile" type="button" data-game="pan"><span class="gt-art" data-ids="barbarian_shirtrip"></span><b>Пантомима</b><span>Покажи эмоцию без слов, команда угадывает. 60 секунд на ход.</span></button>
+      </div>
+    </section>
     <div class="panel sound-panel" id="soundPanel">
       <div>
         <h2>Звуки эмоций <span class="count" id="soundCount">0</span></h2>
@@ -427,6 +516,41 @@ body{font-family:Onest,system-ui,sans-serif;min-height:100dvh;
     <div class="task" id="task"></div>
     <div class="stage" id="stage"></div>
     <div class="scores" id="scores"></div>
+  </section>
+
+  <!-- MEMORY -->
+  <section id="scrMem" class="screen gscreen hidden">
+    <div class="g-head"><h2 class="g-title stroke-s">Найди пару</h2><div class="g-stats"><span class="pill">Ходы <b id="memMoves">0</b></span><span class="pill">Пары <b id="memPairs">0/8</b></span><span class="pill">Время <b id="memTime">0:00</b></span></div></div>
+    <div class="mem-grid" id="memGrid"></div>
+    <div class="g-result hidden" id="memResult"></div>
+    <div class="row"><button class="btn" id="memNew" type="button">Новая раскладка</button><button class="btn blue small g-back" type="button">Меню</button></div>
+  </section>
+
+  <!-- CHAIN (Simon) -->
+  <section id="scrSim" class="screen gscreen hidden">
+    <div class="g-head"><h2 class="g-title stroke-s">Повтори цепочку</h2><div class="g-stats"><span class="pill">Длина <b id="simLen">0</b></span><span class="pill">Рекорд <b id="simBest">0</b></span></div></div>
+    <p class="g-status" id="simStatus" aria-live="polite">Нажми «Старт» и слушай.</p>
+    <div class="sim-grid" id="simGrid"></div>
+    <div class="row"><button class="btn" id="simStart" type="button">Старт</button><button class="btn blue small g-back" type="button">Меню</button></div>
+  </section>
+
+  <!-- ODD ONE OUT -->
+  <section id="scrOdd" class="screen gscreen hidden">
+    <div class="g-head"><h2 class="g-title stroke-s">Найди чужого</h2><div class="g-stats"><span class="pill">Раунд <b id="oddRound">1/10</b></span><span class="pill">Очки <b id="oddScore">0</b></span></div></div>
+    <p class="g-status" id="oddStatus" aria-live="polite"></p>
+    <div class="g-timer"><div id="oddTimer"></div></div>
+    <div class="odd-grid" id="oddGrid"></div>
+    <div class="g-result hidden" id="oddResult"></div>
+    <div class="row"><button class="btn hidden" id="oddNext" type="button">Дальше</button><button class="btn blue small g-back" type="button">Меню</button></div>
+  </section>
+
+  <!-- PANTOMIME -->
+  <section id="scrPan" class="screen gscreen hidden">
+    <div class="g-head"><h2 class="g-title stroke-s">Пантомима</h2><div class="g-stats" id="panScores"></div></div>
+    <p class="g-status" id="panStatus" aria-live="polite"></p>
+    <div class="pan-stage" id="panStage"></div>
+    <div class="row" id="panControls"></div>
+    <div class="row"><button class="btn blue small g-back" type="button">Меню</button></div>
   </section>
 
   <!-- FINAL -->
@@ -1119,7 +1243,7 @@ const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;};
 function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>el.classList.remove('show'),2600);}
-function show(id){if(id!=='#scrRhythm')R.stop&&R.stop();['#scrStart','#scrGame','#scrEnd','#scrRhythm'].forEach(s=>$(s).classList.toggle('hidden',s!==id));$('#roundPill').classList.toggle('hidden',id!=='#scrGame');window.scrollTo(0,0);}
+function show(id){if(id!=='#scrRhythm')R.stop&&R.stop();if(window.stopMiniGames)stopMiniGames(id);['#scrStart','#scrGame','#scrEnd','#scrRhythm','#scrMem','#scrSim','#scrOdd','#scrPan'].forEach(s=>$(s).classList.toggle('hidden',s!==id));$('#roundPill').classList.toggle('hidden',id!=='#scrGame');window.scrollTo(0,0);}
 
 /* setup UI */
 $('#heroFaces').innerHTML=['skeleton_dancing','hog_rider_sunset','king_laughter','goblin_grinch','baby_dragon_egg'].map(i=>byId[i].face()).join('');
@@ -1307,6 +1431,163 @@ $('#againBtn').onclick=()=>{S.players.forEach(p=>p.score=0);S.round=0;S.plan=bui
 $('#menuBtn').onclick=()=>{show('#scrStart');renderPlayers();};
 $('#quizBtn').onclick=()=>{$('#setupBox').classList.remove('hidden');$('#startRow').classList.remove('hidden');$('#setupBox').scrollIntoView({behavior:'smooth',block:'start'});};
 $('#rhythmBtn').onclick=()=>{ac();show('#scrRhythm');R.reset();};
+
+/* ================= Mini games ================= */
+// every emote is named "Персонаж: действие"; the text emotes share the "Надпись" group
+EMOTES.forEach(e=>{e.ch=e.name.includes(':')?e.name.split(':')[0]:'Надпись';});
+const later=(fn,ms,game)=>{const tok=game.tok;return setTimeout(()=>{if(game.tok===tok)fn();},ms);};
+const lsGet=(k,d)=>{try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}};
+const lsSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}};
+const pickN=(arr,n)=>shuffle(arr).slice(0,n);
+const fmtTime=sec=>Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0');
+
+/* --- Memory pairs --- */
+const MEM={tok:0,first:null,lock:false,moves:0,pairs:0,t0:0,timer:null,ids:[]};
+MEM.stop=()=>{MEM.tok++;clearInterval(MEM.timer);};
+MEM.start=()=>{
+  MEM.stop();MEM.first=null;MEM.lock=false;MEM.moves=0;MEM.pairs=0;MEM.t0=0;
+  MEM.ids=pickN(EMOTES,8).map(e=>e.id);MEM.ids.forEach(preloadEmote);
+  const deck=shuffle([...MEM.ids,...MEM.ids]);
+  $('#memGrid').innerHTML=deck.map((id,i)=>`<button class="mcard" type="button" data-id="${id}" aria-label="Карточка ${i+1}"><span class="mc-in"><span class="mc-f"></span><span class="mc-b">${byId[id].face()}</span></span></button>`).join('');
+  $('#memResult').classList.add('hidden');MEM.paint();$('#memTime').textContent='0:00';
+};
+MEM.paint=()=>{$('#memMoves').textContent=MEM.moves;$('#memPairs').textContent=MEM.pairs+'/8';};
+MEM.tick=()=>{$('#memTime').textContent=fmtTime(Math.floor((Date.now()-MEM.t0)/1000));};
+MEM.flip=card=>{
+  if(MEM.lock||card.classList.contains('flip')||card.classList.contains('done'))return;
+  ac();if(!MEM.t0){MEM.t0=Date.now();MEM.timer=setInterval(MEM.tick,500);}
+  card.classList.add('flip');playEmote(card.dataset.id);
+  if(!MEM.first){MEM.first=card;return;}
+  const a=MEM.first,b=card;MEM.first=null;MEM.moves++;
+  if(a.dataset.id===b.dataset.id){
+    a.classList.add('done');b.classList.add('done');MEM.pairs++;MEM.paint();
+    if(MEM.pairs===8){clearInterval(MEM.timer);MEM.tick();
+      const best=lsGet('memBest',null),sec=Math.floor((Date.now()-MEM.t0)/1000),record=best===null||MEM.moves<best;
+      if(record)lsSet('memBest',MEM.moves);
+      later(()=>{sfx('fanfare');$('#memResult').innerHTML=`<h3>Все пары найдены!</h3><p>${MEM.moves} ходов за ${fmtTime(sec)}.${record?' Новый рекорд!':' Рекорд: '+best+' ходов.'}</p>`;$('#memResult').classList.remove('hidden');},700,MEM);}
+  }else{
+    MEM.lock=true;MEM.paint();
+    later(()=>{a.classList.add('miss');b.classList.add('miss');},450,MEM);
+    later(()=>{a.classList.remove('flip','miss');b.classList.remove('flip','miss');MEM.lock=false;},1100,MEM);
+  }
+};
+$('#memGrid').addEventListener('click',e=>{const c=e.target.closest('.mcard');if(c)MEM.flip(c);});
+$('#memNew').onclick=()=>MEM.start();
+
+/* --- Emote chain (Simon) --- */
+const SIM={tok:0,ids:[],seq:[],pos:0,state:'idle',best:lsGet('simBest',0)};
+SIM.stop=()=>{SIM.tok++;SIM.state='idle';document.querySelectorAll('#simGrid .ebtn').forEach(b=>b.classList.remove('lit'));};
+SIM.setup=()=>{
+  SIM.stop();SIM.ids=pickN(EMOTES,6).map(e=>e.id);SIM.ids.forEach(preloadEmote);SIM.seq=[];
+  $('#simGrid').innerHTML=SIM.ids.map(id=>`<button class="ebtn" type="button" data-id="${id}">${byId[id].face()}<span class="cap">${esc(byId[id].name)}</span></button>`).join('');
+  $('#simLen').textContent=0;$('#simBest').textContent=SIM.best;$('#simStatus').textContent='Нажми «Старт» и слушай.';$('#simStart').textContent='Старт';
+};
+SIM.light=(id,ms)=>{const b=$('#simGrid').querySelector(`[data-id="${id}"]`);if(!b)return;b.classList.add('lit');playEmote(id);later(()=>b.classList.remove('lit'),ms,SIM);};
+SIM.playback=()=>{
+  SIM.state='show';$('#simStatus').textContent='Слушай и запоминай…';$('#simLen').textContent=SIM.seq.length;
+  const step=Math.max(520,950-SIM.seq.length*40);
+  SIM.seq.forEach((id,i)=>later(()=>SIM.light(id,step*.7),600+i*step,SIM));
+  later(()=>{SIM.state='input';SIM.pos=0;$('#simStatus').textContent='Твой ход: повтори цепочку';},600+SIM.seq.length*step,SIM);
+};
+SIM.next=()=>{SIM.seq.push(SIM.ids[Math.random()*SIM.ids.length|0]);SIM.playback();};
+SIM.press=b=>{
+  if(SIM.state!=='input')return;
+  const id=b.dataset.id;SIM.light(id,280);
+  if(id!==SIM.seq[SIM.pos]){
+    SIM.state='over';sfx('wrong');const got=SIM.seq.length-1;
+    if(got>SIM.best){SIM.best=got;lsSet('simBest',got);}
+    $('#simBest').textContent=SIM.best;
+    const right=$('#simGrid').querySelector(`[data-id="${SIM.seq[SIM.pos]}"]`);right&&right.classList.add('lit');
+    $('#simStatus').textContent=`Ошибка! Нужно было: ${byId[SIM.seq[SIM.pos]].name}. Цепочка: ${got}.`;$('#simStart').textContent='Ещё раз';
+    return;
+  }
+  SIM.pos++;
+  if(SIM.pos===SIM.seq.length){SIM.state='show';$('#simStatus').textContent='Верно!';later(SIM.next,900,SIM);}
+};
+$('#simGrid').addEventListener('click',e=>{const b=e.target.closest('.ebtn');if(b)SIM.press(b);});
+$('#simStart').onclick=()=>{ac();if(SIM.state==='over'||SIM.seq.length)SIM.setup();SIM.next();$('#simStart').textContent='Заново';};
+
+/* --- Odd one out --- */
+const ODD={tok:0,round:0,score:0,odd:null,timer:null,ROUNDS:10,LIMIT:10000};
+ODD.groups=()=>{const g={};EMOTES.forEach(e=>(g[e.ch]=g[e.ch]||[]).push(e));return Object.values(g).filter(l=>l.length>=3);};
+// «Гоблин», «Гоблины», «Гоблин-гигант» are one family: the odd one must come from another family
+ODD.family=ch=>ch.toLowerCase().split(/[ -]/)[0].replace(/(ые|ие|ий|ой|ая|ое|ы|и)$/,'');
+ODD.stop=()=>{ODD.tok++;cancelAnimationFrame(ODD.timer);};
+ODD.start=()=>{ODD.stop();ODD.round=0;ODD.score=0;$('#oddResult').classList.add('hidden');ODD.next();};
+ODD.next=()=>{
+  ODD.stop();ODD.round++;
+  const groups=ODD.groups(),grp=groups[Math.random()*groups.length|0],three=pickN(grp,3);
+  const odd=pickN(EMOTES.filter(e=>ODD.family(e.ch)!==ODD.family(grp[0].ch)),1)[0];ODD.odd=odd.id;ODD.ch=grp[0].ch;preloadEmote(odd.id);
+  const opts=shuffle([...three,odd]);
+  $('#oddGrid').innerHTML=opts.map(e=>`<button class="ebtn" type="button" data-id="${e.id}">${e.face()}<span class="cap"></span></button>`).join('');
+  $('#oddGrid').classList.remove('hidden');$('#oddNext').classList.add('hidden');
+  $('#oddRound').textContent=ODD.round+'/'+ODD.ROUNDS;$('#oddScore').textContent=ODD.score;$('#oddStatus').textContent='Какая эмоция от другого персонажа?';
+  const t0=performance.now(),tok=ODD.tok,bar=$('#oddTimer');
+  (function loop(){if(ODD.tok!==tok)return;const left=1-(performance.now()-t0)/ODD.LIMIT;bar.style.transform=`scaleX(${Math.max(0,left)})`;
+    if(left<=0){ODD.answer(null);return;}ODD.timer=requestAnimationFrame(loop);})();
+};
+ODD.answer=b=>{
+  ODD.stop();const ok=!!b&&b.dataset.id===ODD.odd;if(ok)ODD.score++;
+  $('#oddGrid').querySelectorAll('.ebtn').forEach(x=>{x.disabled=true;x.querySelector('.cap').textContent=byId[x.dataset.id].name;
+    if(x.dataset.id===ODD.odd)x.classList.add('right');else if(x===b)x.classList.add('wrong');else x.classList.add('dim');});
+  $('#oddScore').textContent=ODD.score;
+  $('#oddStatus').textContent=(ok?'Верно! ':b?'Мимо. ':'Время вышло. ')+`Остальные три: ${ODD.ch}.`;
+  ok?sfx('right'):sfx('wrong');later(()=>playEmote(ODD.odd),350,ODD);
+  if(ODD.round>=ODD.ROUNDS){
+    const best=lsGet('oddBest',0);if(ODD.score>best)lsSet('oddBest',ODD.score);
+    later(()=>{sfx('fanfare');$('#oddResult').innerHTML=`<h3>${ODD.score} из ${ODD.ROUNDS}</h3><p>${ODD.score>best?'Новый рекорд!':'Рекорд: '+best+' из '+ODD.ROUNDS+'.'}</p>`;
+      $('#oddResult').classList.remove('hidden');$('#oddNext').textContent='Играть ещё';$('#oddNext').classList.remove('hidden');},1200,ODD);
+  }else{$('#oddNext').textContent='Дальше';$('#oddNext').classList.remove('hidden');}
+};
+$('#oddGrid').addEventListener('click',e=>{const b=e.target.closest('.ebtn');if(b&&!b.disabled)ODD.answer(b);});
+$('#oddNext').onclick=()=>{ac();ODD.round>=ODD.ROUNDS?ODD.start():ODD.next();};
+
+/* --- Pantomime (Alias-style, two teams) --- */
+const PAN={tok:0,teams:[{name:'Синие',score:0},{name:'Красные',score:0}],turn:0,TURNS:4,TIME:60,left:0,cur:null,deck:[],turnScore:0,timer:null};
+PAN.stop=()=>{PAN.tok++;clearInterval(PAN.timer);};
+PAN.paintScores=()=>{$('#panScores').innerHTML=PAN.teams.map((t,i)=>`<span class="pill${i===PAN.turn%2&&PAN.turn<PAN.TURNS?' on':''}">${t.name} <b>${t.score}</b></span>`).join('');};
+PAN.start=()=>{PAN.stop();PAN.teams.forEach(t=>t.score=0);PAN.turn=0;PAN.deck=shuffle(EMOTES);PAN.intro();};
+PAN.intro=()=>{
+  PAN.stop();PAN.paintScores();const t=PAN.teams[PAN.turn%2];
+  $('#panStatus').textContent=`Ход ${PAN.turn+1} из ${PAN.TURNS}. Показывает команда «${t.name}».`;
+  $('#panStage').innerHTML='<div class="pan-cover">Ведущий берёт экран так, чтобы команда его не видела. Показывай эмоцию без слов и звуков.</div>';
+  $('#panControls').innerHTML='<button class="btn" id="panGo" type="button">Начать ход</button>';
+  $('#panGo').onclick=PAN.go;
+};
+PAN.draw=()=>{if(!PAN.deck.length)PAN.deck=shuffle(EMOTES);PAN.cur=PAN.deck.pop();preloadEmote(PAN.cur.id);
+  $('#panStage').innerHTML=`<div class="pan-clock" id="panClock">${PAN.left}</div><div class="pan-card">${PAN.cur.face()}</div><div class="pan-name">${esc(PAN.cur.name)}</div>`;};
+PAN.go=()=>{
+  ac();PAN.stop();PAN.left=PAN.TIME;PAN.turnScore=0;PAN.draw();
+  $('#panStatus').textContent='Показывай! Команда угадывает вслух.';
+  $('#panControls').innerHTML='<button class="btn red" id="panSkip" type="button">Пропустить</button><button class="btn green" id="panHit" type="button">Угадали +1</button>';
+  $('#panHit').onclick=()=>{PAN.teams[PAN.turn%2].score++;PAN.turnScore++;sfx('right');playEmote(PAN.cur.id);PAN.paintScores();PAN.draw();};
+  $('#panSkip').onclick=()=>{PAN.draw();};
+  const tok=PAN.tok;
+  PAN.timer=setInterval(()=>{if(PAN.tok!==tok)return;PAN.left--;const c=$('#panClock');if(c){c.textContent=PAN.left;c.classList.toggle('low',PAN.left<=10);}
+    if(PAN.left<=5&&PAN.left>0)sfx('tick');if(PAN.left<=0)PAN.end();},1000);
+};
+PAN.end=()=>{
+  PAN.stop();sfx('wrong');const t=PAN.teams[PAN.turn%2];PAN.turn++;PAN.paintScores();
+  if(PAN.turn>=PAN.TURNS){
+    const [a,b]=PAN.teams,win=a.score===b.score?'Ничья!':`Победа: ${(a.score>b.score?a:b).name}`;
+    later(()=>sfx(a.score===b.score?'draw':'fanfare'),600,PAN);
+    $('#panStatus').textContent='Игра окончена.';
+    $('#panStage').innerHTML=`<div class="g-result"><h3>${win}</h3><p>${a.name}: ${a.score}, ${b.name}: ${b.score}</p></div>`;
+    $('#panControls').innerHTML='<button class="btn" id="panAgain" type="button">Играть ещё</button>';$('#panAgain').onclick=PAN.start;return;
+  }
+  $('#panStatus').textContent=`Время! «${t.name}» угадали ${PAN.turnScore}.`;
+  $('#panStage').innerHTML=`<div class="g-result"><h3>+${PAN.turnScore}</h3><p>Следующей показывает команда «${PAN.teams[PAN.turn%2].name}».</p></div>`;
+  $('#panControls').innerHTML='<button class="btn" id="panNextTurn" type="button">Следующий ход</button>';$('#panNextTurn').onclick=PAN.intro;
+};
+
+/* menu wiring */
+const MINI={mem:['#scrMem',MEM.start],sim:['#scrSim',SIM.setup],odd:['#scrOdd',ODD.start],pan:['#scrPan',PAN.start]};
+window.stopMiniGames=keep=>{for(const [k,[scr]] of Object.entries(MINI))if(scr!==keep)({mem:MEM,sim:SIM,odd:ODD,pan:PAN})[k].stop();};
+document.querySelectorAll('.gtile').forEach(t=>{
+  const art=t.querySelector('.gt-art');art.innerHTML=art.dataset.ids.split(',').map(id=>byId[id]?byId[id].face():'').join('');
+  t.onclick=()=>{ac();const [scr,start]=MINI[t.dataset.game];show(scr);start();};
+});
+document.querySelectorAll('.g-back').forEach(b=>b.onclick=()=>show('#scrStart'));
 
 /* ---------------- Rhythm challenge ---------------- */
 const LEVELS=[95,110,125,140,155];
